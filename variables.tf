@@ -22,6 +22,7 @@ variable "subnet_no" {
 variable "server_image_product_code" {
   description = "서버 이미지 코드"
   type        = string
+  default     = null
 }
 
 variable "server_product_code" {
@@ -29,8 +30,31 @@ variable "server_product_code" {
   type        = string
 }
 
+variable "member_server_image_no" {
+  description = "내 서버 이미지 번호"
+  type        = string
+  default     = null
+}
+
 variable "login_key_name" {
-  description = "서버 접속 키 이름"
+  description = "서버 접속 키(.pem) 이름"
   type        = string
 }
 
+variable "is_protect_server_termination" {
+  description = "서버 반납 보호 여부"
+  type        = bool
+  default     = false
+}
+
+variable "fee_system_type_code" {
+  description = "요금제 타입 (MTRAT(시간제) | FXSUM(정액제))"
+  type        = string
+  default     = "MTRAT"
+}
+
+variable "init_script_no" {
+  description = "Init Script 번호"
+  type        = string
+  default     = null
+}

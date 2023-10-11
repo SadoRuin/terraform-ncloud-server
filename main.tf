@@ -23,11 +23,15 @@ resource "ncloud_network_interface" "this" {
 ################################################################################
 
 resource "ncloud_server" "this" {
-  subnet_no                 = var.subnet_no
-  name                      = var.name
-  server_image_product_code = var.server_image_product_code
-  server_product_code       = var.server_product_code
-  login_key_name            = var.login_key_name
+  subnet_no                     = var.subnet_no
+  name                          = var.name
+  server_image_product_code     = var.server_image_product_code
+  server_product_code           = var.server_product_code
+  member_server_image_no        = var.member_server_image_no
+  login_key_name                = var.login_key_name
+  is_protect_server_termination = var.is_protect_server_termination
+  fee_system_type_code          = var.fee_system_type_code
+  init_script_no                = var.init_script_no
 
   dynamic "network_interface" {
     for_each = local.nics
