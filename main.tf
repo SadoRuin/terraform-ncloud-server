@@ -13,7 +13,7 @@ resource "ncloud_network_interface" "this" {
   for_each              = local.nics
   name                  = each.value.name
   description           = each.value.description
-  subnet_no             = each.value.subnet_no
+  subnet_no             = each.value.subnet_id
   access_control_groups = each.value.access_control_groups
 }
 
@@ -23,7 +23,7 @@ resource "ncloud_network_interface" "this" {
 ################################################################################
 
 resource "ncloud_server" "this" {
-  subnet_no                     = var.subnet_no
+  subnet_no                     = var.subnet_id
   name                          = var.name
   server_image_product_code     = var.server_image_product_code
   server_product_code           = var.server_product_code
