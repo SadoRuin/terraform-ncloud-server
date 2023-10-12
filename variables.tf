@@ -58,3 +58,9 @@ variable "init_script_no" {
   type        = string
   default     = null
 }
+
+variable "is_public_ip" {
+  description = "Public IP 할당 여부"
+  type        = bool
+  default     = false
+}

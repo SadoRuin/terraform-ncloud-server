@@ -41,5 +41,14 @@ resource "ncloud_server" "this" {
       order                = network_interface.value.order
     }
   }
+}
 
+
+################################################################################
+# Public IP
+################################################################################
+
+resource "ncloud_public_ip" "this" {
+  count              = var.is_public_ip ? 1 : 0
+  server_instance_no = ncloud_server.this.id
 }
