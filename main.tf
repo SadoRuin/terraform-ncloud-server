@@ -39,7 +39,7 @@ resource "ncloud_server" "this" {
     : null
   )
 
-  server_product_code  = data.ncloud_server_product.server_project.id
+  server_product_code  = data.ncloud_server_product.server_product.id
   login_key_name       = var.login_key_name
   fee_system_type_code = var.fee_system_type_code
   init_script_no       = var.init_script_no
@@ -97,7 +97,7 @@ locals {
   }
 }
 
-data "ncloud_server_product" "server_project" {
+data "ncloud_server_product" "server_product" {
   server_image_product_code = (
     var.server_image_name != null
     ? data.ncloud_server_image.server_image[0].id
