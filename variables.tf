@@ -1,4 +1,4 @@
-variable "nics" {
+variable "network_interfaces" {
   description = "NIC 정보 리스트"
   type = list(object({
     name                  = string       # NIC 이름
@@ -19,32 +19,36 @@ variable "subnet_id" {
   type        = string
 }
 
-variable "server_image_product_code" {
-  description = "서버 이미지 코드"
+variable "server_image_name" {
+  description = "서버 이미지 이름"
   type        = string
   default     = null
 }
 
-variable "server_product_code" {
-  description = "서버 상품 코드"
+variable "member_server_image_name" {
+  description = "내 서버 이미지 이름"
+  type        = string
+  default     = null
+}
+
+variable "product_generation" {
+  description = "서버 세대 (G1 | G2)"
   type        = string
 }
 
-variable "member_server_image_no" {
-  description = "내 서버 이미지 번호"
+variable "product_type" {
+  description = "서버 타입 (High CPU | Standard | High Memory | CPU Intensive | GPU | BareMetal)"
   type        = string
-  default     = null
+}
+
+variable "product_name" {
+  description = "서버 스펙 이름"
+  type        = string
 }
 
 variable "login_key_name" {
   description = "서버 접속 키(.pem) 이름"
   type        = string
-}
-
-variable "is_protect_server_termination" {
-  description = "서버 반납 보호 여부"
-  type        = bool
-  default     = false
 }
 
 variable "fee_system_type_code" {
@@ -59,8 +63,31 @@ variable "init_script_no" {
   default     = null
 }
 
-variable "is_public_ip" {
+variable "is_associate_public_ip" {
   description = "Public IP 할당 여부"
   type        = bool
   default     = false
+}
+
+variable "is_protect_server_termination" {
+  description = "서버 반납 보호 여부"
+  type        = bool
+  default     = false
+}
+
+variable "is_encrypted_base_block_storage_volume" {
+  description = "기본 블록 스토리지 볼륨 암호화 여부"
+  type        = bool
+  default     = false
+}
+
+variable "additional_block_storages" {
+  description = "추가 블록 스토리지 정보 리스트"
+  type = list(object({
+    name                           = string           # 블록 스토리지 이름
+    description                    = string           # 블록 스토리지 설명
+    size                           = number           # 블록 스토리지 크기 (GB)
+    disk_detail_type               = optional(string) # 블록 스토리지 디스크 타입 (SSD | HDD)
+    stop_instance_before_detaching = optional(bool)   # 블록 스토리지 제거 전 서버 중지 여부
+  }))
 }
