@@ -90,4 +90,5 @@ variable "additional_block_storages" {
     disk_detail_type               = optional(string) # 블록 스토리지 디스크 타입 (SSD | HDD)
     stop_instance_before_detaching = optional(bool)   # 블록 스토리지 제거 전 서버 중지 여부
   }))
+  default = []
 }
