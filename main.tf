@@ -5,7 +5,7 @@
 locals {
   network_interfaces = {
     for x in var.network_interfaces :
-    x.name => x
+    x.order => x
   }
 }
 
@@ -51,8 +51,8 @@ resource "ncloud_server" "this" {
     for_each = local.network_interfaces
 
     content {
-      network_interface_no = ncloud_network_interface.this[network_interface.value.name].id
-      order                = network_interface.value.order
+      network_interface_no = ncloud_network_interface.this[network_interface.key].id
+      order                = network_interface.key
     }
   }
 }
