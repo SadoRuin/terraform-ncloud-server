@@ -54,7 +54,7 @@ variable "login_key_name" {
 variable "fee_system_type_code" {
   description = "요금제 타입 (MTRAT(시간제) | FXSUM(정액제))"
   type        = string
-  default     = "MTRAT"
+  default     = null
 }
 
 variable "init_script_no" {
@@ -72,13 +72,13 @@ variable "is_associate_public_ip" {
 variable "is_protect_server_termination" {
   description = "서버 반납 보호 여부"
   type        = bool
-  default     = false
+  default     = null
 }
 
 variable "is_encrypted_base_block_storage_volume" {
   description = "기본 블록 스토리지 볼륨 암호화 여부"
   type        = bool
-  default     = false
+  default     = null
 }
 
 variable "additional_block_storages" {
