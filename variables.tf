@@ -86,7 +86,7 @@ variable "is_encrypted_base_block_storage_volume" {
 variable "additional_block_storages" {
   description = "추가 블록 스토리지 정보 리스트"
   type = list(object({
-    name                           = optional(string) # 블록 스토리지 이름
+    name                           = string           # 블록 스토리지 이름
     description                    = optional(string) # 블록 스토리지 설명
     size                           = number           # 블록 스토리지 크기 (GB)
     disk_detail_type               = optional(string) # 블록 스토리지 디스크 타입 (SSD | HDD)

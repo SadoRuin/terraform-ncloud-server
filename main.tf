@@ -86,7 +86,6 @@ data "ncloud_member_server_image" "member_server_image" {
 # Server Product
 ################################################################################
 
-
 locals {
   product_type = {
     "High CPU"      = "HICPU"
@@ -138,7 +137,6 @@ locals {
     for x in var.additional_block_storages :
     x.name => x
   }
-
 }
 
 resource "ncloud_block_storage" "this" {
