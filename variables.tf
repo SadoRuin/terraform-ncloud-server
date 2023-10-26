@@ -1,17 +1,19 @@
 variable "network_interfaces" {
   description = "NIC 정보 리스트"
   type = list(object({
-    name                  = string       # NIC 이름
-    description           = string       # NIC 메모
-    subnet_id             = string       # Subnet ID
-    access_control_groups = list(string) # ACG ID 리스트
-    order                 = number       # 우선순위
+    name                  = optional(string) # NIC 이름
+    description           = optional(string) # NIC 메모
+    private_ip            = optional(string) # NIC에 할당할 사설 IP
+    subnet_id             = string           # Subnet ID
+    access_control_groups = list(string)     # ACG ID 리스트
+    order                 = number           # 우선순위
   }))
 }
 
 variable "name" {
   description = "서버 이름"
   type        = string
+  default     = null
 }
 
 variable "subnet_id" {
@@ -84,8 +86,8 @@ variable "is_encrypted_base_block_storage_volume" {
 variable "additional_block_storages" {
   description = "추가 블록 스토리지 정보 리스트"
   type = list(object({
-    name                           = string           # 블록 스토리지 이름
-    description                    = string           # 블록 스토리지 설명
+    name                           = optional(string) # 블록 스토리지 이름
+    description                    = optional(string) # 블록 스토리지 설명
     size                           = number           # 블록 스토리지 크기 (GB)
     disk_detail_type               = optional(string) # 블록 스토리지 디스크 타입 (SSD | HDD)
     stop_instance_before_detaching = optional(bool)   # 블록 스토리지 제거 전 서버 중지 여부

@@ -14,6 +14,7 @@ resource "ncloud_network_interface" "this" {
 
   name                  = each.value.name
   description           = each.value.description
+  private_ip            = each.value.private_ip
   subnet_no             = each.value.subnet_id
   access_control_groups = each.value.access_control_groups
 }
