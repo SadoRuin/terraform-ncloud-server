@@ -1,15 +1,3 @@
-variable "network_interfaces" {
-  description = "NIC 정보 리스트"
-  type = list(object({
-    name                  = optional(string) # NIC 이름
-    description           = optional(string) # NIC 메모
-    private_ip            = optional(string) # NIC에 할당할 사설 IP
-    subnet_id             = string           # Subnet ID
-    access_control_groups = list(string)     # ACG ID 리스트
-    order                 = number           # 우선순위
-  }))
-}
-
 variable "name" {
   description = "서버 이름"
   type        = string
@@ -65,6 +53,19 @@ variable "init_script_no" {
   default     = null
 }
 
+variable "network_interfaces" {
+  description = "NIC 정보 리스트"
+  type = list(object({
+    name                  = optional(string) # NIC 이름
+    description           = optional(string) # NIC 메모
+    private_ip            = optional(string) # NIC에 할당할 사설 IP
+    subnet_id             = string           # Subnet ID
+    access_control_groups = list(string)     # ACG ID 리스트
+    order                 = number           # 우선순위 (0 부터 시작)
+  }))
+}
+
+
 variable "is_associate_public_ip" {
   description = "Public IP 할당 여부"
   type        = bool
@@ -87,7 +88,7 @@ variable "additional_block_storages" {
   description = "추가 블록 스토리지 정보 리스트"
   type = list(object({
     name                           = string           # 블록 스토리지 이름
-    description                    = optional(string) # 블록 스토리지 설명
+    description                    = optional(string) # 블록 스토리지 메모
     size                           = number           # 블록 스토리지 크기 (GB)
     disk_detail_type               = optional(string) # 블록 스토리지 디스크 타입 (SSD | HDD)
     stop_instance_before_detaching = optional(bool)   # 블록 스토리지 제거 전 서버 중지 여부

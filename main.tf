@@ -1,26 +1,4 @@
 ################################################################################
-# Network Interface
-################################################################################
-
-locals {
-  network_interfaces = {
-    for x in var.network_interfaces :
-    x.order => x
-  }
-}
-
-resource "ncloud_network_interface" "this" {
-  for_each = local.network_interfaces
-
-  name                  = each.value.name
-  description           = each.value.description
-  private_ip            = each.value.private_ip
-  subnet_no             = each.value.subnet_id
-  access_control_groups = each.value.access_control_groups
-}
-
-
-################################################################################
 # Server
 ################################################################################
 
@@ -117,6 +95,29 @@ data "ncloud_server_product" "server_product" {
     values = [var.product_name]
   }
 }
+
+
+################################################################################
+# Network Interface
+################################################################################
+
+locals {
+  network_interfaces = {
+    for x in var.network_interfaces :
+    x.order => x
+  }
+}
+
+resource "ncloud_network_interface" "this" {
+  for_each = local.network_interfaces
+
+  name                  = each.value.name
+  description           = each.value.description
+  private_ip            = each.value.private_ip
+  subnet_no             = each.value.subnet_id
+  access_control_groups = each.value.access_control_groups
+}
+
 
 ################################################################################
 # Public IP
