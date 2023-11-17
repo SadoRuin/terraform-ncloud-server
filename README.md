@@ -93,7 +93,7 @@ module "tf_test_web_svr" {
 | server_image_name | 서버 이미지 이름 (내 서버 이미지와 둘 중 하나만 사용) | `string` | `null` | no |
 | member_server_image_name | 내 서버 이미지 이름 (서버 이미지와 둘 중 하나만 사용) | `string` | `null` | no |
 | product_generation | 서버 세대 (G1 \| G2) | `string` | - | yes |
-| product_type | 서버 타입 (High CPU \| Standard \| High Memory \| CPU Intensive \| GPU \| BareMetal) | `string` | - | yes |
+| product_type | 서버 타입 (High CPU \| Standard \| High Memory \| CPU Intensive \| GPU) | `string` | - | yes |
 | product_name | 서버 스펙 이름 | `string` | - | yes |
 | login_key_name | 서버 접속 키(.pem) 이름 | `string` | - | yes |
 | fee_system_type_code | 요금제 타입 (MTRAT(시간제) \| FXSUM(정액제)) | `string` | `null` | no |

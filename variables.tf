@@ -24,10 +24,11 @@ variable "member_server_image_name" {
 variable "product_generation" {
   description = "서버 세대 (G1 | G2)"
   type        = string
+  default     = "G2"
 }
 
 variable "product_type" {
-  description = "서버 타입 (High CPU | Standard | High Memory | CPU Intensive | GPU | BareMetal)"
+  description = "서버 타입 (High CPU | Standard | High Memory | CPU Intensive | GPU)"
   type        = string
 }
 

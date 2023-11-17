@@ -71,7 +71,6 @@ locals {
     "High Memory"   = "HIMEM"
     "CPU Intensive" = "CPU"
     "GPU"           = "GPU"
-    "BareMetal"     = "BM"
   }
 }
 
